@@ -2,7 +2,7 @@ class BoardSpace
   attr_reader :contents
   def initialize(space_number)
     @played = false
-    @contents = nil
+    @contents = " "
     @space_number = space_number
   end
 
@@ -35,15 +35,16 @@ class Board
       return "Space already occupied"
     end
   end
+
+  def display_board()
+    puts "#{@board[0].contents}|#{@board[1].contents}|#{@board[2].contents}"
+    puts "-----"
+    puts "#{@board[3].contents}|#{@board[4].contents}|#{@board[5].contents}"
+    puts "-----"
+    puts "#{@board[6].contents}|#{@board[7].contents}|#{@board[8].contents}"
+  end
 end
 # class Board
-#     take_turn(space, contents)
-#       if space is played?
-#         get new answer
-#       else
-#         mark space played?
-#         set contents=contents
-#         turn_number++
 #         if turn_number > 4
       # check_win
       #   check 0,1,2
