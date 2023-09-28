@@ -28,7 +28,7 @@ class Board
 
   def take_turn(space)
     contents = @turn_number % 2 == 0 ? "x" : "o"
-    if @board[space].set_contents(contents) 
+    if @board[space - 1].set_contents(contents) 
       @turn_number += 1
       return true
     else
