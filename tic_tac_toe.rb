@@ -1,5 +1,5 @@
 class BoardSpace
-  attr_reader :contents
+  attr_reader :contents, :played
   def initialize(space_number)
     @played = false
     @contents = " "
@@ -36,6 +36,39 @@ class Board
     end
   end
 
+  def check_win()
+    if @board[0].played
+      if @board[0].contents == @board[1].contents and 
+         @board[0].contents == @board[2].contents
+        return "#{@board[0].contents} wins!"
+      elsif @board[0].contents == @board[3].contents and 
+            @board[0].contents == @board[6].contents
+        return "#{@board[0].contents} wins!"
+      elsif @board[0].contents == @board[4].contents and 
+            @board[0].contents == @board[8].contents
+        return "#{@board[0].contents} wins!"
+      end
+    elsif @board[1].contents == @board[4].contents and 
+          @board[1].contents == @board[7].contents
+      return "#{@board[1].contents} wins!"
+    elsif @board[2].played
+      if @board[2].contents == @board[4].contents and 
+         @board[2].contents == @board[6].contents
+        return "#{@board[2].contents} wins!"
+      elsif @board[2].contents == @board[5].contents and 
+            @board[2].contents == @board[8].contents
+        return "#{@board[2].contents} wins!"
+      end
+    elsif @board[3].contents == @board[4].contents and 
+          @board[3].contents == @board[5].contents
+      return "#{@board[3].contents} wins!"
+    elsif @board[6].contents == @board[7].contents and 
+          @board[6].contents == @board[8].contents
+      return "#{@board[6].contents} wins!"
+    else
+      return false
+    end
+  end
   def display_board()
     puts "#{@board[0].contents}|#{@board[1].contents}|#{@board[2].contents}"
     puts "-----"
