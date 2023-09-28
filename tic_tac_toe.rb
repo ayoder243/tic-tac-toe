@@ -8,12 +8,11 @@ class BoardSpace
 
   def set_contents(contents)
     if @played
-      return "Error: Space already taken"
-    elsif contents == 'x' || contents == 'o'
+      return false
+    else
       @contents = contents
       @played = true
-    else
-      return "Error: Needs to be x or o"
+      return true
     end
   end
 end
@@ -26,12 +25,20 @@ class Board
       @board.push(BoardSpace.new(i))
     end
   end
+
+  def take_turn(space)
+    contents = @turn_number % 2 == 0 ? "x" : "o"
+    puts @turn_number
+    puts contents
+    if @board[space].set_contents(contents) 
+      @turn_number += 1
+      return true
+    else
+      return "Space already occupied"
+    end
+  end
 end
 # class Board
-#     @turn_number = 0
-#     @board = []
-#     for 1-9
-#       add new BoardSpace to @board
 #     take_turn(space, contents)
 #       if space is played?
 #         get new answer
