@@ -32,7 +32,7 @@ class Board
       @turn_number += 1
       return true
     else
-      return "Space already occupied"
+      return false
     end
   end
 
@@ -77,21 +77,28 @@ class Board
     puts "#{@board[6].contents}|#{@board[7].contents}|#{@board[8].contents}"
   end
 end
-# class Board
-#         if turn_number > 4
-      # check_win
-      #   check 0,1,2
-      #         0,3,6
-      #         0,4,8
-      #         1,4,7
-      #         2,5,6
-      #         2,5,8
-      #         3,4,5
-      #         6,7,8
-#     display_board
-#         "{@board[0]}|{@board[1]}|{@board[2]}"
-#         "------"
-#         "{@board[3]}|{@board[4]}|{@board[5]}"
-#         "------"
-#         "{@board[6]}|{@board[7]}|{@board[8]}"
-# end
+
+def display_space_numbers()
+  puts "1|2|3"
+  puts "-----"
+  puts "4|5|6"
+  puts "-----"
+  puts "7|8|9"
+end
+
+keep_playing = true
+
+while keep_playing
+  game = Board.new()
+  until game.check_win()
+    game.display_board()
+    display_space_numbers()
+    space = false
+    until space
+      print "Pick a space: "
+      space = game.take_turn(gets.chomp.to_i)
+    end
+  end
+  print "Do you want to play again? [y/n]: "
+  keep_playing = gets.chomp == "y" ? true : false
+end
