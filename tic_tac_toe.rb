@@ -1,3 +1,32 @@
+class BoardSpace
+  attr_reader :contents
+  def initialize(space_number)
+    @played = false
+    @contents = nil
+    @space_number = space_number
+  end
+
+  def set_contents(contents)
+    if @played
+      return "Error: Space already taken"
+    elsif contents == 'x' || contents == 'o'
+      @contents = contents
+      @played = true
+    else
+      return "Error: Needs to be x or o"
+    end
+  end
+end
+
+class Board
+  def initialize()
+    @turn_number = 0
+    @board = []
+    for i in (1..9)
+      @board.push(BoardSpace.new(i))
+    end
+  end
+end
 # class Board
 #     @turn_number = 0
 #     @board = []
@@ -10,7 +39,7 @@
 #         mark space played?
 #         set contents=contents
 #         turn_number++
-#         if turn_number > 2
+#         if turn_number > 4
       # check_win
       #   check 0,1,2
       #         0,3,6
@@ -27,23 +56,3 @@
 #         "------"
 #         "{@board[6]}|{@board[7]}|{@board[8]}"
 # end
-
-class BoardSpace
-  attr_reader :contents
-  def initialize(space_number)
-    @played = false
-    @contents = nil
-    @space_number = space_number
-  end
-
-  def set_contents(contents)
-    if @played
-      return "Error: Space already taken"
-    else if contents == 'x' || contents == 'o'
-      @contents = contents
-      @played = true
-    else
-      return "Error: Needs to be x or o"
-    end
-  end
-end
