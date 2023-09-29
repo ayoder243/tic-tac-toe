@@ -76,20 +76,12 @@ class Board
     end
   end
   def display_board()
-    puts "#{@board[0].contents}|#{@board[1].contents}|#{@board[2].contents}"
-    puts "-----"
-    puts "#{@board[3].contents}|#{@board[4].contents}|#{@board[5].contents}"
-    puts "-----"
-    puts "#{@board[6].contents}|#{@board[7].contents}|#{@board[8].contents}"
+    puts "#{@board[0].contents}|#{@board[1].contents}|#{@board[2].contents}     1|2|3"
+    puts "-----     -----"
+    puts "#{@board[3].contents}|#{@board[4].contents}|#{@board[5].contents}     4|5|6"
+    puts "-----     -----"
+    puts "#{@board[6].contents}|#{@board[7].contents}|#{@board[8].contents}     7|8|9"
   end
-end
-
-def display_space_numbers()
-  puts "1|2|3"
-  puts "-----"
-  puts "4|5|6"
-  puts "-----"
-  puts "7|8|9"
 end
 
 keep_playing = true
@@ -98,7 +90,6 @@ while keep_playing
   game = Board.new()
   until game.check_win()
     game.display_board()
-    display_space_numbers()
     space = false
     until space
       print "Pick a space: "
