@@ -48,9 +48,11 @@ class Board
             @board[0].contents == @board[8].contents
         return "#{@board[0].contents} wins!"
       end
-    elsif @board[1].contents == @board[4].contents and 
-          @board[1].contents == @board[7].contents
-      return "#{@board[1].contents} wins!"
+    elsif @board[1].played 
+      if @board[1].contents == @board[4].contents and 
+         @board[1].contents == @board[7].contents
+        return "#{@board[1].contents} wins!"
+      end
     elsif @board[2].played
       if @board[2].contents == @board[4].contents and 
          @board[2].contents == @board[6].contents
@@ -59,12 +61,16 @@ class Board
             @board[2].contents == @board[8].contents
         return "#{@board[2].contents} wins!"
       end
-    elsif @board[3].contents == @board[4].contents and 
-          @board[3].contents == @board[5].contents
-      return "#{@board[3].contents} wins!"
-    elsif @board[6].contents == @board[7].contents and 
-          @board[6].contents == @board[8].contents
-      return "#{@board[6].contents} wins!"
+    elsif @board[3].played
+      if @board[3].contents == @board[4].contents and 
+         @board[3].contents == @board[5].contents
+        return "#{@board[3].contents} wins!"
+      end
+    elsif @board[6].played
+      if @board[6].contents == @board[7].contents and 
+         @board[6].contents == @board[8].contents
+        return "#{@board[6].contents} wins!"
+      end
     else
       return false
     end
