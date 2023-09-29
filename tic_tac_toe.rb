@@ -96,6 +96,7 @@ while keep_playing
       space = game.take_turn(gets.chomp.to_i)
     end
   end
+  puts game.check_win()
   print "Do you want to play again? [y/n]: "
   keep_playing = gets.chomp == "y" ? true : false
 end
